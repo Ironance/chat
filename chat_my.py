@@ -2,9 +2,9 @@
 #read file
 def read_file(filename):
     chat = []
-    with open(filename, 'r', encoding='utf-8') as f:
+    with open(filename, 'r', encoding='utf-8-sig') as f:
         for line in f:
-            chat.append(line)
+            chat.append(line.strip())
     return chat
 
 #convertion
@@ -12,13 +12,12 @@ def convert(chat_ori):
     name = ''
     chat_new = []
     for line in chat_ori:
-        if 'Allen' in line:
+        if line == 'Allen':
             name = 'Allen: '
-        elif 'Tom' in line:
+        elif line == 'Tom':
             name = 'Tom: '
         else:
-            line = name + line + '\n'
-            chat_new.append(line)
+            chat_new.append(name + line + '\n')
     return chat_new
 
 #write file
